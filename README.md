@@ -36,5 +36,18 @@ The initialization method is the same as [LIO-SAM_based_relocalization](https://
 
 ## 3.4 start to relocalization
 > note:this code can provide two kind of odometry.
-> 1. "/Odometry_relocal",this is just local scan register to local map,so when IMU is not very stable and may drift,this odometry may stable.
-> 2. 
+> 1. "/Odometry_relocal",**this is just local scan register to local map**,so when IMU is not very stable and may drift,this odometry may stable.
+> 2. "/Odometry",this is the result of loose coupling between IMU recursive results and point cloud matching results.
+
+# 4.The principle of relocalization algorithm
+The principle is very easy.After the pose is initialized, based on the forward propagation of IMU, when the point cloud is generated, it is registered with the local map, and the results of IMU and point cloud registration are updated through Bayesian rule. You can change some local map's params in the config/velodyne_re.yaml.
+
+# 5.to do
+5.1 upload the pcd and bag for reader to run an example.
+5.2 record a video to show this code how to use.
+
+# 6.Acknowledgements
+[fast-lio2](https://github.com/hku-mars/FAST_LIO) 
+[s-fast-lio](https://github.com/zlwang7/S-FAST_LIO)
+[fast-lio-sam](https://github.com/kahowang/FAST_LIO_SAM/tree/master)
+[LIO-SAM_based_relocalization](https://github.com/Gaochao-hit/LIO-SAM_based_relocalization)
