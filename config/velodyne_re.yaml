@@ -1,0 +1,80 @@
+common:
+    # lid_topic:  "/velodyne_points"
+    lid_topic:  "/velodyne_points_a"
+    # lid_topic:  "/velodyne_points_b"
+    # imu_topic:  "/imu/data"
+    imu_topic:  "/imu_raw_a"
+    # imu_topic:  "/imu_raw_b"
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+    time_offset_lidar_to_imu: 0.0 # Time offset between lidar and IMU calibrated by other algorithms, e.g. LI-Init (can be found in README).
+                                  # This param will take effect no matter what time_sync_en is. So if the time offset is not known exactly, please set as 0.0
+
+preprocess:
+    lidar_type: 2                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 32
+    scan_rate: 10                # only need to be set for velodyne, unit: Hz,
+    timestamp_unit: 2            # the unit of time/t field in the PointCloud2 rostopic: 0-second, 1-milisecond, 2-microsecond, 3-nanosecond.
+    blind: 1
+
+mapping:
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    fov_degree:    180
+    det_range:     100.0
+    extrinsic_est_en:  false      # true: enable the online estimation of IMU-LiDAR extrinsic,
+    extrinsic_T: [ 0, 0, 0]
+    extrinsic_R: [ 1, 0, 0, 
+                   0, 1, 0, 
+                   0, 0, 1]
+
+publish:
+    path_en:  false
+    scan_publish_en:  true       # false: close all the point cloud output
+    dense_publish_en: true       # false: low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: true  # true: output the point cloud scans in IMU-body-frame
+
+pcd_save:
+    pcd_save_en: false
+    interval: -1                 # how many LiDAR frames saved in each pcd file; 
+                                 # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.
+
+
+#   relocalization
+globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"        # starts and ends with "/". 
+
+## 匹配相关参数
+NDT:
+    res : 1.0
+    step_size : 0.1
+    trans_eps : 0.01
+    max_iter : 30
+
+frame_filter: voxel_filter # 选择当前帧点云滤波方法，目前支持：voxel_filter、no_filter
+
+# 局部地图
+# 局部地图从全局地图切割得到，此处box_filter_size是切割区间
+# 参数顺序是min_x, max_x, min_y, max_y, min_z, max_z
+box_filter_size: [-150.0, 150.0, -150.0, 150.0, -150.0, 150.0]
+local_map_filter: voxel_filter # 选择滑窗地图点云滤波方法，目前支持：voxel_filter、no_filter
+
+# 全局地图，可视化用的
+global_map_filter: voxel_filter # 选择滑窗地图点云滤波方法，目前支持：voxel_filter、no_filter
+
+voxel_filter:
+    global_map:
+        [0.9, 0.9, 0.9]
+        # [0.3, 0.3, 0.3]
+    local_map:
+        # [0.5, 0.5, 0.5]
+        [0.3, 0.3, 0.3]
+    frame:
+        [1.5, 1.5, 1.5]
+
+init_threshold: 0.15 #初始化匹配的得分阈值
+
+relocal_publish:
+    relocal_odom_en: true   #当前帧点云匹配后的世界位姿（未与imu融合的结果），如果imu性能不好，这个里程更稳定
+    relocal_scan_en: true   #当前帧点云（通过上面的位姿转换后）
+    localmap_en: true       #用于匹配的局部地图
