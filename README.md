@@ -22,4 +22,4 @@ a large global map example:
 <img src=pic/global_map.png align = "middle"  width="600" />
 
 ## 3.2 modify the path of the global map
-in > config/velodyne_re.yaml
+> config/velodyne_re.yaml
