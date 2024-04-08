@@ -14,3 +14,7 @@ cd ../
 catkin_make
 source ~/catkin_ws/devel/setup.bash
 ```
+
+# 3.Relocalization
+## 3.1 build a global map
+Recommend  [fast-lio-sam](https://github.com/kahowang/FAST_LIO_SAM/tree/master) to build a global map.
