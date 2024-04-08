@@ -23,4 +23,4 @@ a large global map example:
 
 ## 3.2 modify the path of the global map
 > config/velodyne_re.yaml
->> edit this param: globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"
+>> edit this param: globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"  # starts and ends with "/". 
