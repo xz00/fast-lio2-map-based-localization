@@ -6,3 +6,11 @@ map-based localization.Modified from [fast-lio2](https://github.com/hku-mars/FAS
 # 1.Prerequisites
 just to follow [s-fast-lio](https://github.com/zlwang7/S-FAST_LIO),I won't go into further detail here.
 
+# 2.Build 
+```
+cd ~/catkin_ws/src
+git clone https://github.com/zlwang7/S-FAST_LIO.git
+cd ../
+catkin_make
+source ~/catkin_ws/devel/setup.bash
+```
