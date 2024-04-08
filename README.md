@@ -44,10 +44,14 @@ The principle is very easy.After the pose is initialized, based on the forward p
 
 # 5.to do
 5.1 upload the pcd and bag for reader to run an example.
+
 5.2 record a video to show this code how to use.
 
 # 6.Acknowledgements
 [fast-lio2](https://github.com/hku-mars/FAST_LIO) 
+
 [s-fast-lio](https://github.com/zlwang7/S-FAST_LIO)
+
 [fast-lio-sam](https://github.com/kahowang/FAST_LIO_SAM/tree/master)
+
 [LIO-SAM_based_relocalization](https://github.com/Gaochao-hit/LIO-SAM_based_relocalization)
