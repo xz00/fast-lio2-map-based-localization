@@ -9,7 +9,7 @@ just to follow [s-fast-lio](https://github.com/zlwang7/S-FAST_LIO),I won't go in
 # 2.Build 
 ```
 cd ~/catkin_ws/src
-git clone https://github.com/zlwang7/S-FAST_LIO.git
+git clone https://github.com/xz00/fast-lio2-map-based-localization.git
 cd ../
 catkin_make
 source ~/catkin_ws/devel/setup.bash
