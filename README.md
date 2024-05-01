@@ -26,6 +26,8 @@ Files that need to be modified is **config/velodyne_re.yaml**
 
 edit this param: globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"  # starts and ends with "/". 
 
+and you should also modify the lidar topic and imu topic.
+
 ## 3.3 run the launch and bag
 ```
 roslaunch sfast_lio mapping_velodyne_relocalization.launch
@@ -72,13 +74,19 @@ When you think the matching initial value you adjusted is good enough, you can p
 
 The green pointcloud is the pointcloud you are adjusting. The red pointcloud is the matched pointcloud after NDT Registration. The yellow pointcloud is the local map.
 
+### 3.3.3 some initialization related parameters 
+in the **config/velodyne_re.yaml**
+1. init_threshold: 0.15 . The initialization is considered successful only when the score of NDT Registration is lower than this value. You can modify this threshold according to the actual situation.
+2. ininit_resolution_rot: 1  . This is the resolution of rotation during initialization.You can modify this threshold according to the actual situation or press "j" "l" to dynamically modify this value. The unit of this value is **angles**.
+3. ininit_resolution_dis: 0.05  . This is the resolution of distance during initialization.You can modify this threshold according to the actual situation or press "i" "k" to dynamically modify this value. The unit of this value is **meters**.
+
 ## 3.4 start to relocalization
 **<font color="red">note:this code can provide two kind of odometry.</font>**
 > 1. "/Odometry_relocal",**this is just local scan register to local map**,so when IMU is not very stable and may drift,this odometry may stable.
 > 2. "/Odometry",this is the result of loose coupling between IMU recursive results and point cloud matching results.
 
 # 4.The principle of relocalization algorithm
-The principle is very easy.After the pose is initialized, based on the forward propagation of IMU, when the point cloud is generated, it is registered with the local map, and the results of IMU and point cloud registration are updated through Bayesian rule. You can change some local map's params in the config/velodyne_re.yaml.
+The principle is very easy.After the pose is initialized, based on the forward propagation of IMU, when the point cloud is generated, it is registered with the local map, and the results of IMU and point cloud registration are updated through Bayesian rule. You can change some local map's params in the **config/velodyne_re.yaml**.
 
 # 5.to do
 5.1 upload the pcd and bag for reader to run an example. 
