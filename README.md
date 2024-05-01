@@ -95,7 +95,10 @@ The principle is very easy.After the pose is initialized, based on the forward p
 
 5.2 record a video to show this code how to use.
 
-**here is a video to show [example](https://www.bilibili.com/video/BV1pM4m197zN/?spm_id_from=333.999.0.0&vd_source=2cbf4364275a2c6c4db080c149572d49)**
+**here is an old video to show [example](https://www.bilibili.com/video/BV1pM4m197zN/?spm_id_from=333.999.0.0&vd_source=2cbf4364275a2c6c4db080c149572d49)**
+
+**you'd better to see this new video to know how to use rough initialization and accurate initialization to finish initialization in a more effective way:**
+**[new vedio](https://www.bilibili.com/video/BV1Xi42117rw/?spm_id_from=333.999.0.0&vd_source=2cbf4364275a2c6c4db080c149572d49)**
 
 # 6.Acknowledgements
 [fast-lio2](https://github.com/hku-mars/FAST_LIO) 
