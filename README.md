@@ -33,7 +33,42 @@ rosbag play your-bag.bag
 ```
 
 ## 3.3 initialization
-The initialization method is the same as [LIO-SAM_based_relocalization](https://github.com/Gaochao-hit/LIO-SAM_based_relocalization),complete initialization matching of point clouds by specifying an initialization position and direction in rviz.
+### 3.3.1 rough initialization
+The rough initialization method is the same as [LIO-SAM_based_relocalization](https://github.com/Gaochao-hit/LIO-SAM_based_relocalization),complete initialization matching of point clouds by specifying an initialization position and direction in rviz.
+
+### 3.3.2 accurate initialization
+Sometimes rough initialization method may not be successful, so it is necessary to use accurate initialization method to do NDT Registration with a better initial value. 
+
+In order to provide a better matching initial value, I used a Python script to obtain keyboard input and continuously adjusted this matching initial value, ultimately successfully initializing it in the map. Providing accurate initial values can significantly increase the success rate of initialization.
+
+Open a new terminal in the working directory and execute the following statement：
+```
+source devel/setup.bash
+rosrun sfast_lio keyboard_catch_local.py
+```
+
+And then in this terminal you can press the corresponding button to adjust the matching initial value:（Here, I have only defined three degrees of freedom: x, y, and yaw. This applies to most initialization situations. If you feel it's not enough, I believe readers can easily make improvements according to the code）
+| keyboard input | meaning |
+| :--: | :--: |
+| w | Moving forward |
+| s | Moving backward |
+| a | Moving left |
+| d | Moving right |
+| q | rotate left |
+| e | rotate right |
+| j | increase rototation resolution |
+| w | reduce rototation resolution |
+| i | increase distance resolution |
+| k | reduce distance resolution |
+| f | finish, start register |
+
+When you think the matching initial value you adjusted is good enough, you can press “f“ to do NDT Registration.
+<br><br/>
+
+<img src="pic/init_manual.gif" width="360" height="240" frameborder="0" scrolling="no" ></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="pic/init_success.gif" width="360" height="240" frameborder="0" scrolling="no"></img>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**adjust the matching initial value**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**initialization successful**
 
 ## 3.4 start to relocalization
 **<font color="red">note:this code can provide two kind of odometry.</font>**
