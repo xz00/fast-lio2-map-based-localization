@@ -22,8 +22,9 @@ a large global map example:
 <img src=pic/globalmap.png align = "middle"  width="600" />
 
 ## 3.2 modify the path of the global map
-> config/velodyne_re.yaml
->> edit this param: globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"  # starts and ends with "/". 
+Files that need to be modified is **config/velodyne_re.yaml**
+
+edit this param: globalmap_dir: "/home/xz/Desktop/catkin_fastlio_slam/data/totalmap.pcd"  # starts and ends with "/". 
 
 ## 3.3 run the launch and bag
 ```
@@ -35,7 +36,7 @@ rosbag play your-bag.bag
 The initialization method is the same as [LIO-SAM_based_relocalization](https://github.com/Gaochao-hit/LIO-SAM_based_relocalization),complete initialization matching of point clouds by specifying an initialization position and direction in rviz.
 
 ## 3.4 start to relocalization
-> note:this code can provide two kind of odometry.
+**<font color="red">note:this code can provide two kind of odometry.</font>**
 > 1. "/Odometry_relocal",**this is just local scan register to local map**,so when IMU is not very stable and may drift,this odometry may stable.
 > 2. "/Odometry",this is the result of loose coupling between IMU recursive results and point cloud matching results.
 
