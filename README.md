@@ -70,6 +70,8 @@ When you think the matching initial value you adjusted is good enough, you can p
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**adjust the matching initial value**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**initialization successful**
 
+The green pointcloud is the pointcloud you are adjusting. The red pointcloud is the matched pointcloud after NDT Registration. The yellow pointcloud is the local map.
+
 ## 3.4 start to relocalization
 **<font color="red">note:this code can provide two kind of odometry.</font>**
 > 1. "/Odometry_relocal",**this is just local scan register to local map**,so when IMU is not very stable and may drift,this odometry may stable.
